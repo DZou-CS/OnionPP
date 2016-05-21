@@ -19,7 +19,7 @@ void start_ticking();
 int main()
 {
 	cout << "press any key to start" << endl;
-	char start_timer = _getch();
+	char start_timer = _getch();     // waits for key to start
 	start_ticking();
 	system("PAUSE");
     return 0;
