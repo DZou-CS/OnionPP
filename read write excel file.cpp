@@ -1,73 +1,52 @@
 // read write excel file.cpp : Defines the entry point for the console application.
+// RW master menu.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
-#include <fstream>
-#include <iostream>
 #include <string>
-#include <iomanip>
 #include <sstream>
-#include <algorithm>
-#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <fstream>
 using namespace std;
-
-/*notes:
-	all files must be in .csv file format, .csv seperates cells with comas(,) which allows for easy access to data in each cell
-	eof = end of file
-
-*/
 
 int main()
 {
-// file delcarations
-	ifstream fs_chola;         //file stream chola
-	ifstream fs_master_menu;   //file stream master_menu
-	ifstream indata;
-	ofstream outdata;
-// variable declarations
-	string LineA;
-	int x;
-	int col = 0;
-	int row = 0;
-	int arrayA[10][10] = { {0} };
-// open file
-	fs_chola.open("CHOLAWCODE.xlsx");
-	if (fs_chola.is_open())
-	{
-		cout << "chola file successfully opened\n";
-	}
-	if (fs_chola.fail())
-	{
-		cerr << "file(chola) not found!"<< endl;
-	}
 
-	fs_master_menu.open("master_menu.csv");
-	if (fs_master_menu.is_open())
-	{
-		cout << "master menu file successfully opened\n";
+	ifstream in("master_menu.csv");
+	if (in.is_open()) {
+		cout << "file is open \n";
 	}
-	if (fs_master_menu.fail())
+	else
+		cerr << "file not fount \n";
+	string line, field;
+
+	vector< vector<string> > array;  // the 2D array
+	vector<string> v;                // array of values for one line only
+
+	while (getline(in, line))    // get next line in file
 	{
-		cerr << "file(master menu) not found! " << endl;
-	}
-// read file
-	while (fs_master_menu.good()){
+		v.clear();
+		stringstream ss(line);
 
-		while (getline(fs_master_menu, LineA)){
-			istringstream streamA(LineA);
-
-			while (streamA >>x){
-				arrayA[row][col] = x;
-				col++;
-			}
-			row++;
+		while (getline(ss, field, ','))  // break line into comma delimitted fields
+		{
+			v.push_back(field); 
 		}
-	}
-	cout << "done \n";
-// show colums and rows (checking for correct answers)
-	cout << "number of rows: " << row << endl;
-	cout << "number of columns: " << col << endl;
-	system("PAUSE");
-    return 0;
-}
 
+		array.push_back(v);  // add the 1D array to the 2D array
+	}
+
+	// print out what was read in
+
+	for (size_t i = 0; i<array.size(); ++i)
+	{
+		for (size_t j = 0; j<array[i].size(); ++j)
+		{
+			cout << array[i][j] << "|";
+		}
+		cout << "\n";
+	}
+
+	return 0;
+}
