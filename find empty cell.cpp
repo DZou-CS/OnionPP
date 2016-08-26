@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
 
-	ifstream in("test_copy.csv"); // in paranthesis, input the name
+	ifstream in("test_copy.csv"); // in paranthesis, change the name of the in file name
 	ofstream out("output_file.csv", ios::app);
 
 	if (in.is_open()) {
