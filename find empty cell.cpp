@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
 
-	ifstream in("test_copy.csv"); // in paranthesis, change the name of the in file name
+	ifstream in("test_copy.csv"); // in paranthesis, input the name
 	ofstream out("output_file.csv", ios::app);
 
 	if (in.is_open()) {
@@ -52,7 +52,7 @@ int main()
 		for (size_t j = 0; j<array[i].size(); ++j) {
 			//cout << array[i][j] << "|";
 			//where the search for empty cell and retrieval happens
-			if((array[i][1].empty()) || (array[i][1] ==" ") || (array[i][1] == "  "))
+			if((array[i][7].empty()) || (array[i][7] ==" ") || (array[i][7] == "  "))
 			{
 				out << array[i][j];
 				out << ',';
