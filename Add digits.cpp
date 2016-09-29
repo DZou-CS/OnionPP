@@ -36,7 +36,7 @@ int main()
 	system("PAUSE");
 	return EXIT_SUCCESS;
 }
-
+/*
 int Count_Digits(int x){
 	x = abs(x);
 	return (x < 10 ? 1 :
@@ -51,3 +51,4 @@ int Count_Digits(int x){
 						10)))))))));
 	return x;
 }
+*/
