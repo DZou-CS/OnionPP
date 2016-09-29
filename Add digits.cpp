@@ -6,7 +6,7 @@
 #include <vector>
 using namespace std;
 
-int Count_Digits(int x);
+//int Count_Digits(int x);
 
 int main()
 {
