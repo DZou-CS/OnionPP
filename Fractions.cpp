@@ -6,37 +6,39 @@
 #include "fractions.h"
 using namespace std;
 bool symbol_check(char c);
-bool denominator_check(int d);
 int main()
 {
+	//declarations
+	fractions_::_fractions_ f();
 	int n; int d; char div_symbol;
 	cout << "enter a fraction" << endl;
 	cin >> n >> div_symbol >> d;
-	
-	/// integrity check
-	if (cin.fail()) {
-		cout << "failed" << endl;
-		system("PAUSE");
-		return EXIT_FAILURE;
-	}
+
 	if (symbol_check(div_symbol) == false) { 
-		cerr << "error" << endl;
+		cerr << "error! not a fraction" << endl;
 		system("PAUSE");
 		return EXIT_FAILURE;
 		
 	}
-	if (denominator_check(d) == false) {
-		cerr << "error /0 " << endl;
+
+	//start -- object declaration
+	_fractions_ f1(n, d);
+	_fractions_ f2(3, 7);
+	if (f1.integrity_check() == false) {
 		system("PAUSE");
 		return EXIT_FAILURE;
 	}
+	// check values for fraction
+	cout << endl;
+	cout << f1 << endl;
+	cout << f2 << endl;
 	
+	//simple arithmetic
+	_fractions_ sum = f1 + f2;
+	cout << sum << endl;
 	
-	//////////////////////
-	_fractions_ f1(n, d);
-	_fractions_ f2(3, 4);
-
-
+	_fractions_ reduce(sum); //reduce doesnt work!
+	//end
 	system("PAUSE");
 	return EXIT_SUCCESS;
 }
@@ -46,10 +48,4 @@ bool symbol_check(char c) {
 		return true;
 	}
 		return false;
-}
-bool denominator_check(int d) {
-	if ((d == 0) || (d <= 0)) {
-		return false;
-	}
-	return true;
 }
