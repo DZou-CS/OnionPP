@@ -2,7 +2,6 @@
 #ifndef fractions_
 #define fractions_
 #include <iostream>
-#include <cmath>
 
 class _fractions_
 {
