@@ -60,31 +60,30 @@ public:
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	void reduce(_fractions_& fraction) {
+	void reduce() {
 		std::cout << "reduced :";
-		if (fraction.numerator_ > fraction.denominator_) {
+		if (numerator_ > denominator_) {
 			int whole_number;
-			whole_number = (fraction.numerator_ / fraction.denominator_);
-			_fractions_ x((fraction.numerator_ - fraction.denominator_), fraction.denominator_);
-			std::cout << whole_number << "(" << x << ")" << std::endl;
+			whole_number = (numerator_ / denominator_);
+			_fractions_ x((numerator_ - denominator_), denominator_);
+			std::cout << whole_number << " (" << x << ")" << std::endl;
 		}
-		if (fraction.numerator_ < fraction.denominator_) {
-			int new_numerator; int new_denominator;
-			for (int i = 1; i == fraction.numerator_; i++) {
+		if (numerator_ < denominator_) {
+			int new_numerator, new_denominator;
+			for (int i = 1; i == numerator_; i++) {
 				std::cout << "running loop" << std::endl;
-				if ((fraction.numerator_ % i == 0) && (fraction.denominator_ % i == 0)) {
-					new_numerator = fraction.numerator_ / i;
-					new_denominator = fraction.denominator_ / i;
+				if ((numerator_ % i == 0) && (denominator_ % i == 0)) {
+					new_numerator = numerator_ / i;
+					new_denominator = denominator_ / i;
 					_fractions_ x(new_numerator, new_denominator);
 					std::cout << x << std::endl;
 				}
 			}
 		}
-		if (fraction.numerator_ == fraction.denominator_) {
+		if (numerator_ == denominator_) {
 			std::cout << 1 << std::endl;
 		}
 	}
 };
 
 #endif // !fractions_
-
