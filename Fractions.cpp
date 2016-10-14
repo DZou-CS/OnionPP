@@ -23,7 +23,7 @@ int main()
 
 	//start -- object declaration
 	_fractions_ f1(n, d);
-	_fractions_ f2(3, 7);
+	_fractions_ f2(3, 7);   // test
 	if (f1.integrity_check() == false) {
 		system("PAUSE");
 		return EXIT_FAILURE;
@@ -36,8 +36,10 @@ int main()
 	//simple arithmetic
 	_fractions_ sum = f1 + f2;
 	cout << sum << endl;
-	
-	_fractions_ reduce(sum); //reduce doesnt work!
+	sum.reduce();
+
+	/* notes */
+	// I've tested it with other operations, they work	
 	//end
 	system("PAUSE");
 	return EXIT_SUCCESS;
